@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">Multi Image Picker</string>
+    <item name="image_id" type="id"/>
+</resources>
