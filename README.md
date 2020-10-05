@@ -4,9 +4,6 @@
 Multi Image Picker and Multi Image Capture Demo app
 This is a sample demonstration for multiple images capture as well as multiple image picker. UX/UI can be styled with any color with relativity to Material Design. The demo shows tinting multiple views based on theme color!!
 
-# Demo App
-<a href='https://play.google.com/store/apps/details?id=sm.multimager.example&pcampaignid=MKT-Other-global-all-co-prtnr-py-PartBadge-Mar2515-1'><img style="width:200" alt='Get it on Google Play' src='https://play.google.com/intl/en_us/badges/images/generic/en_badge_web_generic.png'/></a>
-
 # Library
 Add the jitpack repo to your repositories section in root level build.gradle
 
@@ -20,7 +17,7 @@ Add the jitpack repo to your repositories section in root level build.gradle
 Add the dependencies to the app level build.gradle
 
     dependencies {
-        compile 'com.github.vansikrishna:Multimager:1.0.8'
+    	implementation 'com.github.sudarshaana:MultiImagePicker:1.0'
     }
 
 # Screenshots
@@ -71,3 +68,5 @@ Add the dependencies to the app level build.gradle
 The default style is green, but it can be modified with any set colors. One for normal state and another for pressed state.
 ```setViewsColorStateList()``` in Utils class will do the job.
 	
+# Declaimer
+This library is developed and modified from this ![library](https://github.com/sudarshaana/MultiImagePicker).
