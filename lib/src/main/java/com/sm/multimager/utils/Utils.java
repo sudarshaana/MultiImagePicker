@@ -1,5 +1,6 @@
 package com.sm.multimager.utils;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
 import android.content.pm.PackageManager;
@@ -7,14 +8,6 @@ import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.graphics.drawable.GradientDrawable;
 import android.os.Build;
-import android.support.design.widget.Snackbar;
-import android.support.v7.app.ActionBar;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.AppCompatButton;
-import android.support.v7.widget.AppCompatImageButton;
-import android.support.v7.widget.AppCompatImageView;
-import android.support.v7.widget.AppCompatTextView;
-import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
 import android.view.Window;
@@ -23,6 +16,17 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.AppCompatButton;
+import androidx.appcompat.widget.AppCompatImageButton;
+import androidx.appcompat.widget.AppCompatImageView;
+import androidx.appcompat.widget.AppCompatTextView;
+import androidx.appcompat.widget.Toolbar;
+
+import com.google.android.material.snackbar.Snackbar;
+import com.sm.multimager.R;
 
 /**
  * Created by vansikrishna on 08/06/2016.
@@ -35,14 +39,14 @@ public class Utils {
 
     public static void showShortSnack(View parent, String message){
         Snackbar snackbar = Snackbar.make(parent, message, Snackbar.LENGTH_SHORT);
-        TextView textView = (TextView) snackbar.getView().findViewById(android.support.design.R.id.snackbar_text);
+        TextView textView = (TextView) snackbar.getView().findViewById(R.id.snackbar_text);
         textView.setMaxLines(10);
         snackbar.show();
     }
 
     public static void showLongSnack(View parent, String message){
         Snackbar snackbar = Snackbar.make(parent, message, Snackbar.LENGTH_LONG);
-        TextView textView = (TextView) snackbar.getView().findViewById(android.support.design.R.id.snackbar_text);
+        TextView textView = (TextView) snackbar.getView().findViewById(R.id.snackbar_text);
         textView.setMaxLines(10);
         snackbar.show();
     }
@@ -115,6 +119,7 @@ public class Utils {
         }
     }
 
+    @SuppressLint("RestrictedApi")
     public static void setViewsColorStateList(View view, int normalColor, int darkenedColor) {
         int[][] states = new int[][] {new int[] { android.R.attr.state_enabled}, new int[] { android.R.attr.state_pressed}};
         int[] colors = new int[]{normalColor, darkenedColor};
@@ -124,6 +129,7 @@ public class Utils {
         }
     }
 
+    @SuppressLint("RestrictedApi")
     public static void setViewsColorStateList(int normalColor, int darkenedColor, View... views) {
         int[][] states = new int[][] {new int[0] , new int[] { android.R.attr.state_pressed}};
         int[] colors = new int[]{normalColor, darkenedColor};

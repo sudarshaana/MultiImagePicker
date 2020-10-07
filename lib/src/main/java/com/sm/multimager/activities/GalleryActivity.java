@@ -9,12 +9,6 @@ import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.provider.MediaStore;
-import android.support.annotation.NonNull;
-import android.support.v7.app.AlertDialog;
-import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.StaggeredGridLayoutManager;
-import android.support.v7.widget.Toolbar;
 import android.util.DisplayMetrics;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -22,6 +16,13 @@ import android.view.View;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.widget.Toolbar;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 
 import com.sm.multimager.R;
 import com.sm.multimager.adapters.GalleryImagesAdapter;
@@ -52,10 +53,10 @@ public class GalleryActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_gallery);
-        parentLayout = (RelativeLayout) findViewById(R.id.parentLayout);
-        toolbar = (Toolbar) findViewById(R.id.toolbar);
-        toolbar_title = (TextView) findViewById(R.id.toolbar_title);
-        recycler_view = (RecyclerView) findViewById(R.id.recycler_view);
+        parentLayout = findViewById(R.id.parentLayout);
+        toolbar = findViewById(R.id.toolbar);
+        toolbar_title = findViewById(R.id.toolbar_title);
+        recycler_view = findViewById(R.id.recycler_view);
         init();
         checkForPermissions();
     }
