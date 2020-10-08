@@ -17,7 +17,7 @@ Add the jitpack repo to your repositories section in root level build.gradle
 Add the dependencies to the app level build.gradle
 
     dependencies {
-    	implementation 'com.github.sudarshaana:MultiImagePicker:1.0'
+    	implementation 'com.github.sudarshaana:MultiImagePicker:1.1'
     }
 
 # Screenshots
