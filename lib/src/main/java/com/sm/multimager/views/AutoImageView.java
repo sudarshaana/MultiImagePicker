@@ -7,10 +7,12 @@ import android.view.ViewGroup;
 import android.view.ViewParent;
 import android.widget.ImageView;
 
+import androidx.appcompat.widget.AppCompatImageView;
+
 /**
  * Created by vansikrishna on 08/06/2016.
  */
-public class AutoImageView extends ImageView {
+public class AutoImageView extends AppCompatImageView {
     private boolean adjustViewBounds;
 
     public AutoImageView(Context context) {

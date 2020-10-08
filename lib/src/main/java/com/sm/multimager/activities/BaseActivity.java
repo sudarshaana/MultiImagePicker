@@ -6,9 +6,10 @@ import android.content.Context;
 import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Bundle;
-import android.support.v4.app.ActivityCompat;
-import android.support.v4.content.ContextCompat;
-import android.support.v7.app.AppCompatActivity;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 
 import com.sm.multimager.views.CustomProgressDialog;
 
@@ -18,7 +19,7 @@ import java.util.List;
 /**
  * Created by vansikrishna on 08/06/2016.
  */
-public class BaseActivity extends AppCompatActivity{
+public class BaseActivity extends AppCompatActivity {
 
     public CustomProgressDialog progressDialog;
     public static final int SHOW_PROGRESS = 1;

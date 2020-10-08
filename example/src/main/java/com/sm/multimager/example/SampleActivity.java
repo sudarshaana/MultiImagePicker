@@ -5,9 +5,6 @@ import android.content.Intent;
 import android.content.res.TypedArray;
 import android.net.Uri;
 import android.os.Bundle;
-import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.util.DisplayMetrics;
 import android.util.TypedValue;
 import android.view.View;
@@ -15,6 +12,10 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 
 import com.flask.colorpicker.ColorPickerView;
 import com.flask.colorpicker.OnColorSelectedListener;
@@ -31,35 +32,36 @@ import com.sm.multimager.utils.Utils;
 
 import java.util.ArrayList;
 
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.ButterKnife;
-import butterknife.OnClick;
 
 /**
  * Created by vansikrishna on 08/06/2016.
  */
 public class SampleActivity extends BaseActivity {
 
-    @Bind(R.id.recycler_view)
+    @BindView(R.id.recycler_view)
     RecyclerView recyclerView;
-    @Bind(R.id.parentLayout)
+    @BindView(R.id.parentLayout)
     LinearLayout parentLayout;
     int selectedColor;
     int darkenedColor;
-    @Bind(R.id.multiCaptureButton)
+    @BindView(R.id.multiCaptureButton)
     Button multiCaptureButton;
-    @Bind(R.id.multiPickerButton)
+    @BindView(R.id.multiPickerButton)
     Button multiPickerButton;
-    @Bind(R.id.customThemeButton)
+    @BindView(R.id.customThemeButton)
     Button customThemeButton;
-    @Bind(R.id.call)
+    @BindView(R.id.call)
     ImageView callImageView;
-    @Bind(R.id.message)
+    @BindView(R.id.message)
     ImageView messageImageView;
-    @Bind(R.id.contact_us)
+    @BindView(R.id.contact_us)
     TextView contactUsTextView;
-    @Bind(R.id.app_name)
+    @BindView(R.id.app_name)
     TextView appNameTextView;
+    @BindView(R.id.github)
+    TextView github;
 
 
     @Override
@@ -77,6 +79,37 @@ public class SampleActivity extends BaseActivity {
                 messageImageView,
                 contactUsTextView,
                 appNameTextView);
+
+        multiCaptureButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (Utils.hasCameraHardware(SampleActivity.this))
+                    initiateMultiCapture();
+                else
+                    Utils.showLongSnack(parentLayout, "Sorry. Your device does not have a camera.");
+            }
+        });
+
+        multiPickerButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                initiateMultiPicker();
+            }
+        });
+
+        customThemeButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                setCustomTheme();
+            }
+        });
+
+        github.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                navigateToUrl();
+            }
+        });
     }
 
     private int fetchAccentColor() {
@@ -95,8 +128,6 @@ public class SampleActivity extends BaseActivity {
         }
         switch (requestCode) {
             case Constants.TYPE_MULTI_CAPTURE:
-                handleResponseIntent(intent);
-                break;
             case Constants.TYPE_MULTI_PICKER:
                 handleResponseIntent(intent);
                 break;
@@ -118,27 +149,6 @@ public class SampleActivity extends BaseActivity {
         recyclerView.setLayoutManager(mLayoutManager);
         GalleryImagesAdapter imageAdapter = new GalleryImagesAdapter(this, imagesList, getColumnCount(), new Params());
         recyclerView.setAdapter(imageAdapter);
-    }
-
-    @OnClick({R.id.multiCaptureButton, R.id.multiPickerButton, R.id.customThemeButton, R.id.github})
-    public void onClick(View view) {
-        switch (view.getId()) {
-            case R.id.multiCaptureButton:
-                if (Utils.hasCameraHardware(this))
-                    initiateMultiCapture();
-                else
-                    Utils.showLongSnack(parentLayout, "Sorry. Your device does not have a camera.");
-                break;
-            case R.id.multiPickerButton:
-                initiateMultiPicker();
-                break;
-            case R.id.customThemeButton:
-                setCustomTheme();
-                break;
-            case R.id.github:
-                navigateToUrl();
-                break;
-        }
     }
 
     private void navigateToUrl() {

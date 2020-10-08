@@ -3,9 +3,10 @@ package com.sm.multimager.activities;
 import android.app.Fragment;
 import android.os.Build;
 import android.os.Bundle;
-import android.support.annotation.RequiresApi;
 import android.view.MenuItem;
 import android.widget.Toast;
+
+import androidx.annotation.RequiresApi;
 
 import com.sm.multimager.R;
 import com.sm.multimager.utils.Constants;
